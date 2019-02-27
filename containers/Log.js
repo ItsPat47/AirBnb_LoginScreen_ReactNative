@@ -1,6 +1,9 @@
 import React from "react";
+import axios from "axios";
 import Icon from "react-native-vector-icons/Entypo";
+
 import {
+  AsyncStorage,
   View,
   Text,
   TextInput,
@@ -9,9 +12,39 @@ import {
 } from "react-native";
 
 export default class MainScreen extends React.Component {
+  state = {
+    email: "arno@airbnb-api.com",
+    password: "password01",
+    token: ""
+  };
   static navigationOptions = ({ navigation }) => ({
-    title: "AirBnb"
+    header: null
   });
+  storage = async () => {
+    await AsyncStorage.setItem("token", this.state.token);
+  };
+  onSubmit = () => {
+    axios
+      .post("https://airbnb-api.now.sh/api/user/log_in", {
+        email: this.state.email,
+        password: this.state.password
+      })
+      .then(response => {
+        if (response.data && response.data.token) {
+          console.log(response.data.token);
+          this.setState({ token: response.data.token });
+          this.onLogin();
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+  onLogin = async () => {
+    const { navigate } = this.props.navigation;
+    await this.storage();
+    navigate("Profile", { name: "Annonces" });
+  };
 
   render() {
     const { navigate } = this.props.navigation;
@@ -19,11 +52,23 @@ export default class MainScreen extends React.Component {
       <View style={styles.container}>
         <Icon style={styles.logo} name="home" size={100} color="white" />
         <Text style={styles.welcome}>Welcome</Text>
-        <TextInput style={styles.input} placeholder="Email" />
-        <TextInput style={styles.input} placeholder="Password" />
+        <TextInput
+          style={styles.input}
+          onChangeText={email => this.setState({ email })}
+          value={this.state.email}
+          type="text"
+          placeholder="Email"
+        />
+        <TextInput
+          style={styles.input}
+          onChangeText={password => this.setState({ password })}
+          value={this.state.password}
+          placeholder="Password"
+        />
         <TouchableOpacity
           style={styles.Button}
-          onPress={() => navigate("Profile", { name: "Annonces" })}
+          onPress={() => this.onSubmit()}
+          // onPress={() => navigate("Profile", { name: "Annonces" })}
         >
           <Text style={styles.loginbutton}>Login</Text>
         </TouchableOpacity>
