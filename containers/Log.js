@@ -31,7 +31,6 @@ export default class MainScreen extends React.Component {
       })
       .then(response => {
         if (response.data && response.data.token) {
-          console.log(response.data.token);
           this.setState({ token: response.data.token });
           this.onLogin();
         }
@@ -53,6 +52,8 @@ export default class MainScreen extends React.Component {
         <Icon style={styles.logo} name="home" size={100} color="white" />
         <Text style={styles.welcome}>Welcome</Text>
         <TextInput
+          autoCorrect={false}
+          autoCapitalize={"none"}
           style={styles.input}
           onChangeText={email => this.setState({ email })}
           value={this.state.email}
@@ -60,6 +61,8 @@ export default class MainScreen extends React.Component {
           placeholder="Email"
         />
         <TextInput
+          autoCorrect={false}
+          autoCapitalize={"none"}
           style={styles.input}
           onChangeText={password => this.setState({ password })}
           value={this.state.password}
@@ -84,9 +87,9 @@ const styles = StyleSheet.create({
     marginBottom: 40
   },
   container: {
+    paddingTop: "40%",
     backgroundColor: "#EE6564",
     flexDirection: "column",
-
     alignItems: "center",
     height: "100%"
   },
@@ -103,7 +106,7 @@ const styles = StyleSheet.create({
     color: "#EE6564"
   },
   input: {
-    borderBottomWidth: 1,
+    borderBottomWidth: 1, //ou StyleSheet.hairlineWidth
     borderBottomColor: "white",
     width: "70%",
     marginBottom: 30
