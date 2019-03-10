@@ -2,11 +2,11 @@
 Lunch with **Expo** :  
  npm_start
 
-use this login for the demo :  
+### use this login for the demo :  
   **email**: arno@airbnb-api.com   
   **password**: password01
 
-dependencies :  
+### dependencies :  
 -  React Native,  
 -  Expo,  
 -  Axios
