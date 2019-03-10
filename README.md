@@ -7,4 +7,4 @@ dependencies :
 #-Expo
 #-Axios
 
-![Alt Text](https://media.giphy.com/media/KZQzp4qvILDsCxEfss/giphy.mp4)
+![Alt Text](https://media.giphy.com/media/KZQzp4qvILDsCxEfss/200w_d.gif)
