@@ -1,8 +1,12 @@
-# AirBnb_LoginScreen_ReactNative
+# ReactNative AirBnb 
 Lunch with **Expo** :  
  npm_start
 
-- dependencies :  
+use this login for the demo :
+ email: arno@airbnb-api.com
+ password: password01
+
+dependencies :  
 -  React Native,  
 -  Expo,  
 -  Axios
