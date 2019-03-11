@@ -14,7 +14,7 @@ import {
 export default class MainScreen extends React.Component {
   state = {
     email: "arno@airbnb-api.com",
-    password: "password01",
+    password: "",
     token: ""
   };
   static navigationOptions = ({ navigation }) => ({
@@ -67,6 +67,7 @@ export default class MainScreen extends React.Component {
           onChangeText={password => this.setState({ password })}
           value={this.state.password}
           placeholder="Password"
+          secureTextEntry={true}
         />
         <TouchableOpacity
           style={styles.Button}

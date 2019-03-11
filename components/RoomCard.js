@@ -36,8 +36,15 @@ class RoomCard extends React.Component {
             <Text style={{ color: "white", fontSize: 20 }}>{room.price}€</Text>
           </View>
         </ImageBackground>
-        <View style={{ flexDirection: "row" }}>
-          <Text>{room.title}</Text>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+            marginTop: 5
+          }}
+        >
+          <Text style={{ fontSize: 14 }}>{room.title}</Text>
           <Image
             source={{ uri: room.user.account.photos[0] }}
             style={{
@@ -47,7 +54,7 @@ class RoomCard extends React.Component {
             }}
           />
         </View>
-        <View style={{ flexDirection: "row" }}>
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
           {this.renderStars(room.ratingValue)}
           <Text>{room.reviews} reviews</Text>
         </View>

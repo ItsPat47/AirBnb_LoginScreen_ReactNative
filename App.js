@@ -3,8 +3,8 @@ import MainScreen from "./containers/Log";
 import Annonces from "./containers/Annonces";
 import House from "./containers/House";
 const App = createStackNavigator({
-  Profile: Annonces,
   Main: MainScreen,
+  Profile: Annonces,
   Particulier: House
 });
 
